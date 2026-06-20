@@ -163,6 +163,8 @@ const simpleHash=s=>{let h=0;for(let i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt
 const getSession=()=>{try{return JSON.parse(localStorage.getItem(LS_SESSION));}catch(e){return null;}};
 const setSession=id=>localStorage.setItem(LS_SESSION,JSON.stringify({userId:id}));
 const clearSession=()=>localStorage.removeItem(LS_SESSION);
+const setLastId=id=>localStorage.setItem('somLastId',id);
+const getLastId=()=>localStorage.getItem('somLastId')||'';
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.remove('show');void t.offsetWidth;t.classList.add('show');}
 const daysEn=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const mons=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
@@ -173,7 +175,7 @@ function timeOnly(ts){const d=new Date(ts);let h=d.getHours();const ap=h<12?'오
 function firstLine(t){const l=(t||'').trim().split('\n')[0];return l||'';}
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-let state={screen:'lock',tab:'calendar',editingEntry:null,pendingLoc:null,
+let state={screen:getSession()?'main':'lock',tab:'calendar',editingEntry:null,pendingLoc:null,
   calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),selDayKey:dayKey(Date.now())};
 const app=document.getElementById('app');
 
@@ -188,7 +190,7 @@ function renderLock(){
   app.innerHTML=`<div class="lock-screen">
     <div class="brand serif">SOMSOM</div>
     <div class="brand-sub serif">get lost in your story</div>
-    <div class="field"><label>ID</label><input id="lid" type="text" placeholder="아이디" autocomplete="off"></div>
+    <div class="field"><label>ID</label><input id="lid" type="text" placeholder="아이디" autocomplete="off" value="${esc(getLastId())}"></div>
     <div class="field"><label>PASSWORD</label><input id="lpw" type="password" placeholder="비밀번호"></div>
     <div class="lock-msg" id="lmsg"></div>
     <button class="btn-main" id="lbtn">OPEN</button>
@@ -201,9 +203,10 @@ function renderLock(){
     const u=users.find(x=>x.id===id);
     if(!u){m.textContent='등록되지 않은 아이디입니다.';return;}
     if(u.pwHash!==simpleHash(pw)){m.textContent='비밀번호가 올바르지 않습니다.';return;}
-    setSession(id);state.screen='main';render();
+    setLastId(id);setSession(id);state.screen='main';render();
   };
   document.getElementById('lsignup').onclick=()=>{state.screen='signup';render();};
+  if(getLastId()){const pwEl=document.getElementById('lpw');if(pwEl)pwEl.focus();}
 }
 
 function renderSignup(){
@@ -224,7 +227,7 @@ function renderSignup(){
     if(users.find(u=>u.id===id)){m.textContent='이미 사용 중인 아이디입니다.';return;}
     if(pw!==pw2){m.textContent='비밀번호가 서로 다릅니다.';return;}
     users.push({id,pwHash:simpleHash(pw),createdAt:Date.now()});saveUsers(users);
-    setSession(id);state.screen='main';render();
+    setLastId(id);setSession(id);state.screen='main';render();
   };
   document.getElementById('sback').onclick=()=>{state.screen='lock';render();};
 }
