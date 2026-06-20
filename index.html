@@ -175,7 +175,7 @@ function timeOnly(ts){const d=new Date(ts);let h=d.getHours();const ap=h<12?'오
 function firstLine(t){const l=(t||'').trim().split('\n')[0];return l||'';}
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-let state={screen:getSession()?'main':'lock',tab:'calendar',editingEntry:null,pendingLoc:null,
+let state={screen:'lock',tab:'calendar',editingEntry:null,pendingLoc:null,
   calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),selDayKey:dayKey(Date.now())};
 const app=document.getElementById('app');
 
@@ -434,6 +434,7 @@ function renderSettings(){
   };
 }
 
+clearSession();
 render();
 if('serviceWorker'in navigator){
   const sw=`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>self.clients.claim());self.addEventListener('fetch',e=>{});`;
