@@ -705,27 +705,52 @@ function renderEditor(){
     dirtyEditor=false;clearDraft(s.userId);state.screen='main';render();
   });
 
-  document.querySelectorAll('.kind-toggle button').forEach(b=>b.onclick=()=>{
-    document.querySelectorAll('.kind-toggle button').forEach(x=>x.classList.remove('active'));
-    b.classList.add('active');kind=b.dataset.k;state._draftKind=kind;
-    locNoteUpdate();
-  });
-
   const note=document.getElementById('locNote');
   function locNoteUpdate(){
     if(kind==='memo'){note.style.display='none';return;}
     note.style.display='flex';
-    if(locStatus==='ok'&&loc){note.classList.add('active');note.textContent=`◦ 이 위치가 함께 기록됩니다 (${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)})`;}
-    else if(locStatus==='denied'){note.classList.remove('active');note.textContent='◦ 위치 없이 저장됩니다';}
-    else{note.classList.remove('active');note.textContent='위치 정보를 가져오는 중…';}
+    if(locStatus==='ok'&&loc){
+      note.classList.add('active');
+      note.innerHTML=`◦ 이 위치가 함께 기록됩니다 (${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)})`;
+    } else if(locStatus==='denied'){
+      note.classList.remove('active');
+      note.innerHTML=`◦ 위치를 가져오지 못했어요 <span id="retryLoc" style="text-decoration:underline;cursor:pointer;color:var(--ink);">다시 시도</span>`;
+      const retry=document.getElementById('retryLoc');
+      if(retry)retry.onclick=()=>{locStatus='idle';locNoteUpdate();requestLocation();};
+    } else {
+      note.classList.remove('active');
+      note.textContent='위치 정보를 가져오는 중…';
+    }
   }
+  function requestLocation(){
+    if(!('geolocation'in navigator)||!(location.protocol==='https:'||location.hostname==='localhost')){
+      locStatus='denied';locNoteUpdate();return;
+    }
+    // 1차: 와이파이/통신사 기반 위치 (빠르고 실내에서도 잘 잡힘)
+    navigator.geolocation.getCurrentPosition(
+      p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};state.pendingLoc=loc;locStatus='ok';locNoteUpdate();},
+      ()=>{
+        // 2차: 정밀 GPS로 재시도 (대기시간 더 길게)
+        navigator.geolocation.getCurrentPosition(
+          p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};state.pendingLoc=loc;locStatus='ok';locNoteUpdate();},
+          ()=>{locStatus='denied';locNoteUpdate();},
+          {timeout:15000,enableHighAccuracy:true,maximumAge:0}
+        );
+      },
+      {timeout:6000,enableHighAccuracy:false,maximumAge:60000}
+    );
+  }
+
+  document.querySelectorAll('.kind-toggle button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.kind-toggle button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');kind=b.dataset.k;state._draftKind=kind;
+    locNoteUpdate();
+    if(kind==='diary'&&!loc&&locStatus!=='ok'){requestLocation();}
+  });
+
   locNoteUpdate();
   if(kind==='diary'&&!loc){
-    if('geolocation'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
-      navigator.geolocation.getCurrentPosition(
-        p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};state.pendingLoc=loc;locStatus='ok';locNoteUpdate();},
-        ()=>{locStatus='denied';locNoteUpdate();},{timeout:8000});
-    }else{locStatus='denied';locNoteUpdate();}
+    requestLocation();
   }
 
   function renderPhotoStrip(){
