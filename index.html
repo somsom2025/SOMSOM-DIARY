@@ -152,6 +152,70 @@
   .toast.show{animation:toastIn 2.4s ease forwards;}
   @keyframes toastIn{0%{opacity:0;transform:translateX(-50%) translateY(8px);}15%{opacity:1;transform:translateX(-50%) translateY(0);}85%{opacity:1;}100%{opacity:0;}}
   .back-row{display:flex;align-items:center;gap:6px;}
+
+  /* ---------- 토글 스위치 ---------- */
+  .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .toggle{position:relative;width:46px;height:26px;flex-shrink:0;}
+  .toggle input{opacity:0;width:0;height:0;}
+  .toggle .slider{position:absolute;inset:0;background:#ddd6cb;border-radius:14px;cursor:pointer;transition:.2s;}
+  .toggle .slider:before{position:absolute;content:'';width:20px;height:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,0.25);}
+  .toggle input:checked + .slider{background:var(--accent);}
+  .toggle input:checked + .slider:before{transform:translateX(20px);}
+
+  /* ---------- 모달(확인창) ---------- */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:300;display:flex;align-items:center;justify-content:center;padding:30px;}
+  .modal-box{background:#fff;border-radius:10px;padding:26px 24px;max-width:320px;width:100%;text-align:center;}
+  .modal-box .mt{font-size:16px;margin-bottom:8px;}
+  .modal-box .md{font-size:13px;color:var(--ink-soft);margin-bottom:22px;line-height:1.6;}
+  .modal-actions{display:flex;gap:10px;}
+  .modal-actions button{flex:1;padding:11px;border-radius:6px;border:1px solid var(--line);background:none;font-size:14px;cursor:pointer;font-family:inherit;color:var(--ink);}
+  .modal-actions button.primary{background:var(--ink);color:#fff;border-color:var(--ink);}
+
+  /* ---------- 메인 탭 3개 ---------- */
+  .tabbar button{flex:1;}
+
+  /* ---------- 메모 (구글킵 스타일 카드) ---------- */
+  .memo-grid{padding:16px 18px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .memo-card{background:#fdfcf9;border:1px solid var(--line);border-radius:10px;padding:14px;cursor:pointer;
+    display:flex;flex-direction:column;gap:6px;min-height:90px;position:relative;}
+  .memo-card:active{background:#f7f5f0;}
+  .memo-card .mtitle{font-size:14px;font-weight:600;color:var(--ink);word-break:break-word;}
+  .memo-card .mtext{font-size:12.5px;color:var(--ink-soft);line-height:1.5;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word;}
+  .memo-card .mdate{font-size:10px;color:var(--ink-faint);margin-top:auto;}
+  .memo-card .pin{position:absolute;top:8px;right:8px;font-size:13px;color:var(--accent);}
+  .memo-card.pinned{border-color:#d8b9a8;background:#fdf8f3;}
+  .memo-section-label{padding:14px 24px 4px;font-size:11px;color:var(--ink-soft);letter-spacing:1px;grid-column:1/-1;}
+  .memo-thumb{width:100%;height:70px;object-fit:cover;border-radius:6px;margin-bottom:2px;}
+
+  /* ---------- 사진 첨부 ---------- */
+  .photo-strip{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  .photo-thumb{position:relative;width:72px;height:72px;border-radius:8px;overflow:hidden;border:1px solid var(--line);}
+  .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-thumb .rm{position:absolute;top:2px;right:2px;width:18px;height:18px;background:rgba(0,0,0,0.55);
+    color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;cursor:pointer;}
+  .photo-add{width:72px;height:72px;border-radius:8px;border:1px dashed var(--line);display:flex;align-items:center;
+    justify-content:center;font-size:22px;color:var(--ink-faint);cursor:pointer;background:none;flex-shrink:0;}
+  .detail-photos{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+  .detail-photos img{width:100%;border-radius:8px;display:block;}
+
+  /* ---------- 일정 ---------- */
+  .sched-row{padding:16px 26px;border-bottom:1px solid var(--line);}
+  .sched-row .stitle{font-size:15px;margin-bottom:4px;}
+  .sched-row .smeta{font-size:12px;color:var(--ink-soft);}
+  .cal-cell .sched-dot{background:#5b7a9d;}
+  .cal-cell.sel .sched-dot{background:#fff;}
+  .dual-dot{display:flex;gap:2px;position:absolute;bottom:7px;}
+  .lunar-label{font-size:9px;color:var(--ink-faint);margin-top:-2px;}
+  .form-row{margin-top:18px;}
+  .form-row label{font-size:11px;color:var(--ink-soft);letter-spacing:.5px;display:block;margin-bottom:6px;}
+  .form-row select,.form-row input[type=date],.form-row input[type=time]{
+    width:100%;padding:9px 8px;border:1px solid var(--line);border-radius:6px;font-size:14px;background:#fff;font-family:inherit;color:var(--ink);}
+  .chip-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{padding:7px 14px;border:1px solid var(--line);border-radius:20px;font-size:12.5px;color:var(--ink-soft);cursor:pointer;}
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .notice-banner{margin:14px 26px 0;padding:13px 16px;background:#FBF1E6;border-radius:8px;font-size:13px;color:#7a5a2e;
+    display:flex;justify-content:space-between;align-items:center;gap:10px;}
+  .notice-banner .x{cursor:pointer;font-size:13px;color:#a78a5c;}
 </style>
 </head>
 <body>
@@ -165,32 +229,170 @@ const saveUsers=u=>localStorage.setItem(LS_USERS,JSON.stringify(u));
 const eKey=id=>'somEntries_'+id;
 const loadEntries=id=>{try{return JSON.parse(localStorage.getItem(eKey(id)))||[];}catch(e){return[];}};
 const saveEntries=(id,l)=>localStorage.setItem(eKey(id),JSON.stringify(l));
+const schedKey=id=>'somSched_'+id;
+const loadSched=id=>{try{return JSON.parse(localStorage.getItem(schedKey(id)))||[];}catch(e){return[];}};
+const saveSched=(id,l)=>localStorage.setItem(schedKey(id),JSON.stringify(l));
 const simpleHash=s=>{let h=0;for(let i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i);h|=0;}return'h'+h.toString(36);};
 const getSession=()=>{try{return JSON.parse(localStorage.getItem(LS_SESSION));}catch(e){return null;}};
 const setSession=id=>localStorage.setItem(LS_SESSION,JSON.stringify({userId:id}));
 const clearSession=()=>localStorage.removeItem(LS_SESSION);
 const setLastId=id=>localStorage.setItem('somLastId',id);
 const getLastId=()=>localStorage.getItem('somLastId')||'';
+const getAutoLogin=()=>localStorage.getItem('somAutoLogin')==='1';
+const setAutoLogin=v=>localStorage.setItem('somAutoLogin',v?'1':'0');
 function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.remove('show');void t.offsetWidth;t.classList.add('show');}
 const daysEn=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const mons=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const dowKr=['일','월','화','수','목','금','토'];
 function fmtFull(ts){const d=new Date(ts);let h=d.getHours();const ap=h<12?'AM':'PM';h=h%12||12;return `${daysEn[d.getDay()]}, ${mons[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()} ${h}:${String(d.getMinutes()).padStart(2,'0')} ${ap}`;}
 function dayKey(ts){const d=new Date(ts);return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;}
+function dayKeyYMD(y,m,d){return `${y}-${m}-${d}`;}
 function timeOnly(ts){const d=new Date(ts);let h=d.getHours();const ap=h<12?'오전':'오후';h=h%12||12;return `${ap} ${h}:${String(d.getMinutes()).padStart(2,'0')}`;}
 function firstLine(t){const l=(t||'').trim().split('\n')[0];return l||'';}
-const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-let state={screen:'lock',tab:'calendar',editingEntry:null,pendingLoc:null,
-  calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),selDayKey:dayKey(Date.now())};
+/* =========================================================
+   음력 변환 (1900~2050, KASI 기준 데이터 내장)
+   각 항목: 그 음력년도의 각 달이 큰달(30일)인지 작은달(29일)인지를
+   비트로 표현 + 윤달 위치. 아래는 공개된 통상적 음력 변환 테이블 포맷.
+   ========================================================= */
+const LUNAR_INFO=[
+0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,
+0x04ae0,0x0a5b6,0x0a4d0,0x0d250,0x1d255,0x0b540,0x0d6a0,0x0ada2,0x095b0,0x14977,
+0x04970,0x0a4b0,0x0b4b5,0x06a50,0x06d40,0x1ab54,0x02b60,0x09570,0x052f2,0x04970,
+0x06566,0x0d4a0,0x0ea50,0x06e95,0x05ad0,0x02b60,0x186e3,0x092e0,0x1c8d7,0x0c950,
+0x0d4a0,0x1d8a6,0x0b550,0x056a0,0x1a5b4,0x025d0,0x092d0,0x0d2b2,0x0a950,0x0b557,
+0x06ca0,0x0b550,0x15355,0x04da0,0x0a5d0,0x14573,0x052d0,0x0a9a8,0x0e950,0x06aa0,
+0x0aea6,0x0ab50,0x04b60,0x0aae4,0x0a570,0x05260,0x0f263,0x0d950,0x05b57,0x056a0,
+0x096d0,0x04dd5,0x04ad0,0x0a4d0,0x0d4d4,0x0d250,0x0d558,0x0b540,0x0b5a0,0x195a6,
+0x095b0,0x049b0,0x0a974,0x0a4b0,0x0b27a,0x06a50,0x06d40,0x0af46,0x0ab60,0x09570,
+0x04af5,0x04970,0x064b0,0x074a3,0x0ea50,0x06b58,0x05ac0,0x0ab60,0x096d5,0x092e0,
+0x0c960,0x0d954,0x0d4a0,0x0da50,0x07552,0x056a0,0x0abb7,0x025d0,0x092d0,0x0cab5,
+0x0a950,0x0b4a0,0x0baa4,0x0ad50,0x055d9,0x04ba0,0x0a5b0,0x15176,0x052b0,0x0a930,
+0x07954,0x06aa0,0x0ad50,0x05b52,0x04b60,0x0a6e6,0x0a4e0,0x0d260,0x0ea65,0x0d530,
+0x05aa0,0x076a3,0x096d0,0x04afb,0x04ad0,0x0a4d0,0x1d0b6,0x0d250,0x0d520,0x0dd45,
+0x0b5a0,0x056d0,0x055b2,0x049b0,0x0a577,0x0a4b0,0x0aa50,0x1b255,0x06d20,0x0ada0
+];
+function lunarYearDays(y){let sum=348;const info=LUNAR_INFO[y-1900];for(let i=0x8000;i>0x8;i>>=1){sum+=(info&i)?1:0;}return sum+leapDays(y);}
+function leapMonth(y){return LUNAR_INFO[y-1900]&0xf;}
+function leapDays(y){if(leapMonth(y)){return (LUNAR_INFO[y-1900]&0x10000)?30:29;}return 0;}
+function monthDays(y,m){return (LUNAR_INFO[y-1900]&(0x10000>>m))?30:29;}
+const LUNAR_BASE=new Date(1900,0,31).getTime();
+function solarToLunar(date){
+  const y0=date.getFullYear();
+  if(y0<1900||y0>2049)return null;
+  let offset=Math.floor((date.getTime()-LUNAR_BASE)/86400000);
+  let temp=0,y=1900,m,leap=0,isLeap=false;
+  for(;y<2050&&offset>0;y++){temp=lunarYearDays(y);offset-=temp;}
+  if(offset<0){offset+=temp;y--;}
+  let isLeapMonth=false;
+  leap=leapMonth(y);
+  for(m=1;m<13&&offset>0;m++){
+    if(leap>0&&m===(leap+1)&&!isLeapMonth){
+      --m;isLeapMonth=true;temp=leapDays(y);
+    } else {
+      temp=monthDays(y,m);
+    }
+    if(isLeapMonth&&m===(leap+1))isLeapMonth=false;
+    offset-=temp;
+  }
+  if(offset===0&&leap>0&&m===leap+1){
+    if(isLeapMonth){isLeapMonth=false;}else{isLeapMonth=true;--m;}
+  }
+  if(offset<0){offset+=temp;--m;}
+  return {year:y,month:m,day:offset+1,isLeap:isLeapMonth};
+}
+function lunarLabel(date){
+  const l=solarToLunar(date);
+  if(!l)return'';
+  return `음 ${l.month}.${String(l.day).padStart(2,'0')}${l.isLeap?'(윤)':''}`;
+}
+
+/* ---------- 사진 압축 ---------- */
+function compressImage(file,maxDim=900,quality=0.7){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        let w=img.width,h=img.height;
+        if(w>h&&w>maxDim){h=Math.round(h*maxDim/w);w=maxDim;}
+        else if(h>maxDim){w=Math.round(w*maxDim/h);h=maxDim;}
+        const canvas=document.createElement('canvas');
+        canvas.width=w;canvas.height=h;
+        canvas.getContext('2d').drawImage(img,0,0,w,h);
+        resolve(canvas.toDataURL('image/jpeg',quality));
+      };
+      img.onerror=reject;
+      img.src=reader.result;
+    };
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+/* =========================================================
+   상태
+   ========================================================= */
+let state={screen:'lock',tab:'calendar',editingEntry:null,editingSched:null,pendingLoc:null,
+  calYear:new Date().getFullYear(),calMonth:new Date().getMonth(),selDayKey:dayKey(Date.now()),
+  draftPhotos:[],dismissedNotice:false};
+
 const app=document.getElementById('app');
+
+/* ---------- 나가기/뒤로가기 시 변경사항 확인 ---------- */
+let dirtyEditor=false;
+function guardLeave(action){
+  if(dirtyEditor){
+    showConfirmModal('나가시겠어요?','저장하지 않은 내용이 있어요. 그래도 나가시겠어요?',()=>{dirtyEditor=false;action();});
+  } else {
+    action();
+  }
+}
+function showConfirmModal(title,desc,onYes){
+  const ov=document.createElement('div');ov.className='modal-overlay';
+  ov.innerHTML=`<div class="modal-box"><div class="mt serif">${esc(title)}</div><div class="md">${esc(desc)}</div>
+    <div class="modal-actions"><button id="mNo">취소</button><button class="primary" id="mYes">나가기</button></div></div>`;
+  document.body.appendChild(ov);
+  ov.querySelector('#mNo').onclick=()=>ov.remove();
+  ov.querySelector('#mYes').onclick=()=>{ov.remove();onYes();};
+  ov.onclick=(e)=>{if(e.target===ov)ov.remove();};
+}
+
+/* 브라우저/탭 종료 시 자동 임시저장 */
+window.addEventListener('beforeunload',()=>{ if(dirtyEditor) saveDraftNow(); });
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden'&&dirtyEditor) saveDraftNow(); });
+
+function draftKey(uid){return 'somDraft_'+uid;}
+function saveDraftNow(){
+  const s=getSession();if(!s)return;
+  const titleEl=document.getElementById('titleInput');
+  const textEl=document.getElementById('textArea');
+  if(!titleEl&&!textEl)return;
+  const draft={
+    title:titleEl?titleEl.value:'',
+    text:textEl?textEl.value:'',
+    kind:state._draftKind||'diary',
+    loc:state.pendingLoc||null,
+    photos:state.draftPhotos||[],
+    editingId: state.editingEntry?state.editingEntry.id:null,
+    savedAt:Date.now()
+  };
+  localStorage.setItem(draftKey(s.userId),JSON.stringify(draft));
+}
+function loadDraft(uid){try{return JSON.parse(localStorage.getItem(draftKey(uid)));}catch(e){return null;}}
+function clearDraft(uid){localStorage.removeItem(draftKey(uid));}
 
 function render(){
   const s=getSession();
   if(!s&&state.screen!=='signup')state.screen='lock';
-  ({lock:renderLock,signup:renderSignup,main:renderMain,editor:renderEditor,detail:renderDetail,settings:renderSettings}[state.screen]||renderLock)();
+  ({lock:renderLock,signup:renderSignup,main:renderMain,editor:renderEditor,detail:renderDetail,
+    settings:renderSettings,schedEditor:renderSchedEditor}[state.screen]||renderLock)();
 }
 
+/* =========================================================
+   로그인 / 가입
+   ========================================================= */
 function renderLock(){
   const users=loadUsers();
   app.innerHTML=`<div class="lock-screen">
@@ -203,14 +405,18 @@ function renderLock(){
     <button class="btn-ghost" id="lsignup">새 계정 만들기</button>
     ${users.length?`<div class="hint-users">이 폰의 계정 · ${users.map(u=>esc(u.id)).join(' / ')}</div>`:''}
   </div>`;
-  document.getElementById('lbtn').onclick=()=>{
-    const id=document.getElementById('lid').value.trim(),pw=document.getElementById('lpw').value,m=document.getElementById('lmsg');
+  const doLogin=(id,pw)=>{
+    const m=document.getElementById('lmsg');
     if(!id||!pw){m.textContent='아이디와 비밀번호를 입력해 주세요.';return;}
     const u=users.find(x=>x.id===id);
     if(!u){m.textContent='등록되지 않은 아이디입니다.';return;}
     if(u.pwHash!==simpleHash(pw)){m.textContent='비밀번호가 올바르지 않습니다.';return;}
-    setLastId(id);setSession(id);state.screen='main';render();
+    setLastId(id);setSession(id);
+    if(typeof window.__afterLoginHook==='function')window.__afterLoginHook();
+    state.screen='main';state._justLoggedIn=true;render();
   };
+  document.getElementById('lbtn').onclick=()=>doLogin(document.getElementById('lid').value.trim(),document.getElementById('lpw').value);
+  document.getElementById('lpw').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin(document.getElementById('lid').value.trim(),document.getElementById('lpw').value);});
   document.getElementById('lsignup').onclick=()=>{state.screen='signup';render();};
   if(getLastId()){const pwEl=document.getElementById('lpw');if(pwEl)pwEl.focus();}
 }
@@ -233,48 +439,120 @@ function renderSignup(){
     if(users.find(u=>u.id===id)){m.textContent='이미 사용 중인 아이디입니다.';return;}
     if(pw!==pw2){m.textContent='비밀번호가 서로 다릅니다.';return;}
     users.push({id,pwHash:simpleHash(pw),createdAt:Date.now()});saveUsers(users);
-    setLastId(id);setSession(id);state.screen='main';render();
+    setLastId(id);setSession(id);
+    if(typeof window.__afterLoginHook==='function')window.__afterLoginHook();
+    state.screen='main';render();
   };
   document.getElementById('sback').onclick=()=>{state.screen='lock';render();};
 }
 
+/* =========================================================
+   메인 (달력 / 메모 / 모아보기) + 알림 배너
+   ========================================================= */
+function todaysSchedules(s){
+  const list=loadSched(s.userId);
+  const todayKey=dayKey(Date.now());
+  return list.filter(sc=>occursOn(sc,todayKey));
+}
+function occursOn(sc,k){
+  const [y,m,d]=k.split('-').map(Number);
+  if(!sc.repeat||sc.repeat==='none'){
+    return dayKey(sc.date)===k;
+  }
+  const startDate=new Date(sc.date);
+  const target=new Date(y,m,d);
+  if(target<new Date(startDate.getFullYear(),startDate.getMonth(),startDate.getDate()))return false;
+  if(sc.repeat==='weekly')return target.getDay()===startDate.getDay();
+  if(sc.repeat==='monthly')return target.getDate()===startDate.getDate();
+  if(sc.repeat==='yearly')return target.getMonth()===startDate.getMonth()&&target.getDate()===startDate.getDate();
+  return false;
+}
+
 function renderMain(){
   const s=getSession();
+  const tabTitle={calendar:'Calendar',memo:'Memo',list:'Diary'}[state.tab]||'SOMSOM';
   app.innerHTML=`<div class="topbar">
-      <span class="title serif">${state.tab==='calendar'?'Calendar':'Diary'}</span>
+      <span class="title serif">${tabTitle}</span>
       <button class="icon-btn" id="setBtn" style="margin-left:auto;">≡</button>
-    </div><div id="mainBody"></div>`;
-  if(state.tab==='calendar')renderCalendar();else renderListAll();
+    </div><div id="noticeArea"></div><div id="mainBody"></div>`;
+
+  // 알림 배너: 비번을 매번 치는 사용자에게 "방금 로그인" 시 보여줌. 자동로그인 사용자는 항상 보임(달력 상단)
+  const todays=todaysSchedules(s);
+  const noticeArea=document.getElementById('noticeArea');
+  const shouldShow = todays.length>0 && !state.dismissedNotice;
+  if(shouldShow){
+    noticeArea.innerHTML=`<div class="notice-banner"><span>📅 오늘 일정 ${todays.length}건: ${todays.map(t=>esc(t.title)).join(', ')}</span><span class="x" id="noticeX">✕</span></div>`;
+    document.getElementById('noticeX').onclick=()=>{state.dismissedNotice=true;noticeArea.innerHTML='';};
+  }
+  state._justLoggedIn=false;
+
+  if(state.tab==='calendar')renderCalendar();
+  else if(state.tab==='memo')renderMemoGrid();
+  else renderListAll();
+
   document.getElementById('setBtn').onclick=()=>{state.screen='settings';render();};
-  // 탭바
+
   const tb=document.createElement('div');tb.className='tabbar';
   tb.innerHTML=`
     <button data-t="calendar" class="${state.tab==='calendar'?'active':''}"><span class="ti">▦</span>달력</button>
+    <button data-t="memo" class="${state.tab==='memo'?'active':''}"><span class="ti">▤</span>메모</button>
     <button data-t="list" class="${state.tab==='list'?'active':''}"><span class="ti">≣</span>모아보기</button>`;
   app.appendChild(tb);
   tb.querySelectorAll('button').forEach(b=>b.onclick=()=>{state.tab=b.dataset.t;render();});
+
   const fab=document.createElement('button');fab.className='fab';fab.textContent='+';
   app.appendChild(fab);
-  fab.onclick=()=>{state.editingEntry=null;state.pendingLoc=null;state.screen='editor';render();};
+  fab.onclick=()=>{
+    if(state.tab==='calendar'){
+      // 달력탭의 + 는 일기쓰기와 일정추가를 고를 수 있게
+      showAddChoice();
+    } else if(state.tab==='memo'){
+      state.editingEntry=null;state.pendingLoc=null;state.draftPhotos=[];state._draftKind='memo';
+      state.screen='editor';render();
+    } else {
+      state.editingEntry=null;state.pendingLoc=null;state.draftPhotos=[];state._draftKind='diary';
+      state.screen='editor';render();
+    }
+  };
+}
+
+function showAddChoice(){
+  const ov=document.createElement('div');ov.className='modal-overlay';
+  ov.innerHTML=`<div class="modal-box"><div class="mt serif">무엇을 추가할까요?</div>
+    <div class="modal-actions"><button id="addDiary">일기/메모</button><button class="primary" id="addSched">일정</button></div></div>`;
+  document.body.appendChild(ov);
+  ov.onclick=(e)=>{if(e.target===ov)ov.remove();};
+  ov.querySelector('#addDiary').onclick=()=>{ov.remove();state.editingEntry=null;state.pendingLoc=null;state.draftPhotos=[];state._draftKind='diary';state.screen='editor';render();};
+  ov.querySelector('#addSched').onclick=()=>{ov.remove();state.editingSched=null;state.screen='schedEditor';render();};
 }
 
 function renderCalendar(){
   const s=getSession();
   const entries=loadEntries(s.userId);
+  const scheds=loadSched(s.userId);
   const counts={};entries.forEach(e=>{const k=dayKey(e.createdAt);counts[k]=(counts[k]||0)+1;});
+  const schedDays=new Set();
   const y=state.calYear,m=state.calMonth;
-  const first=new Date(y,m,1);const startDow=first.getDay();
   const daysInMonth=new Date(y,m+1,0).getDate();
+  for(let d=1;d<=daysInMonth;d++){
+    const k=dayKeyYMD(y,m,d);
+    if(scheds.some(sc=>occursOn(sc,k)))schedDays.add(k);
+  }
+  const first=new Date(y,m,1);const startDow=first.getDay();
   const todayK=dayKey(Date.now());
   let cells='';
   for(let i=0;i<startDow;i++)cells+=`<div class="cal-cell empty"></div>`;
   for(let d=1;d<=daysInMonth;d++){
-    const k=`${y}-${m}-${d}`;const dow=new Date(y,m,d).getDay();
+    const k=dayKeyYMD(y,m,d);const dow=new Date(y,m,d).getDay();
     const cls=['cal-cell'];
     if(dow===0)cls.push('sun');
     if(k===todayK)cls.push('today');
     if(k===state.selDayKey)cls.push('sel');
-    cells+=`<div class="${cls.join(' ')}" data-k="${k}" data-d="${d}">${d}${counts[k]?'<span class="cal-dot"></span>':''}</div>`;
+    let dots='';
+    if(counts[k]||schedDays.has(k)){
+      dots=`<span class="dual-dot">${counts[k]?'<span class="cal-dot"></span>':''}${schedDays.has(k)?'<span class="cal-dot sched-dot"></span>':''}</span>`;
+    }
+    cells+=`<div class="${cls.join(' ')}" data-k="${k}">${d}${dots}</div>`;
   }
   const body=document.getElementById('mainBody');
   body.innerHTML=`<div class="cal-wrap">
@@ -296,26 +574,73 @@ function renderCalendar(){
 function renderDayEntries(){
   const s=getSession();
   const wrap=document.getElementById('dayEntries');if(!wrap)return;
-  const list=loadEntries(s.userId).filter(e=>dayKey(e.createdAt)===state.selDayKey).sort((a,b)=>b.createdAt-a.createdAt);
   const [yy,mm,dd]=state.selDayKey.split('-').map(Number);
   const lbl=`${mm+1}월 ${dd}일 (${dowKr[new Date(yy,mm,dd).getDay()]})`;
-  if(!list.length){
-    wrap.innerHTML=`<div class="day-label serif">${lbl}</div><div class="empty-day">이 날의 기록이 없어요.<br>아래 + 로 글을 남겨보세요.</div>`;
+  const lunar=lunarLabel(new Date(yy,mm,dd));
+  const diaryList=loadEntries(s.userId).filter(e=>dayKey(e.createdAt)===state.selDayKey&&e.kind!=='memo').sort((a,b)=>b.createdAt-a.createdAt);
+  const schedList=loadSched(s.userId).filter(sc=>occursOn(sc,state.selDayKey));
+
+  let html=`<div class="day-label serif">${lbl} <span class="lunar-label">${lunar}</span></div>`;
+  if(schedList.length){
+    html+=schedList.map(sc=>`<div class="sched-row" data-sid="${sc.id}">
+      <div class="stitle serif">📌 ${esc(sc.title)}</div>
+      <div class="smeta">${sc.allDay?'하루 종일':timeOnly(new Date(yy,mm,dd,sc.hour||0,sc.minute||0).getTime())}${sc.repeat&&sc.repeat!=='none'?' · 반복':''}</div>
+    </div>`).join('');
+  }
+  if(!diaryList.length&&!schedList.length){
+    html+=`<div class="empty-day">이 날의 기록이 없어요.<br>아래 + 로 글을 남겨보세요.</div>`;
+  } else if(diaryList.length){
+    html+=diaryList.map((e,i)=>{
+      const t=firstLine(e.title)||firstLine(e.text);
+      return `<div class="entry-row" data-id="${e.id}">
+        <span class="row-title ${t?'':'empty'} serif">${t?esc(t):'(제목 없음)'}</span>
+        <span class="row-meta">${e.photos&&e.photos.length?'📷 ':''}${timeOnly(e.createdAt)}</span>
+      </div><div class="row-sep"></div>`;
+    }).join('');
+  }
+  wrap.innerHTML=html;
+  wrap.querySelectorAll('.entry-row').forEach(r=>r.onclick=()=>{state.editingEntry=diaryList.find(e=>e.id===r.dataset.id);state.screen='detail';render();});
+  wrap.querySelectorAll('.sched-row').forEach(r=>r.onclick=()=>{
+    state.editingSched=schedList.find(sc=>sc.id===r.dataset.sid);state.screen='schedEditor';render();
+  });
+}
+
+function renderMemoGrid(){
+  const s=getSession();
+  const memos=loadEntries(s.userId).filter(e=>e.kind==='memo').sort((a,b)=>b.createdAt-a.createdAt);
+  const pinned=memos.filter(m=>m.pinned);
+  const rest=memos.filter(m=>!m.pinned);
+  const body=document.getElementById('mainBody');
+  if(!memos.length){
+    body.innerHTML=`<div class="empty-state"><div class="mk serif">MEMO</div><p>아직 적은 메모가 없어요.<br>아래 + 를 눌러 첫 메모를 남겨보세요.</p></div>`;
     return;
   }
-  wrap.innerHTML=`<div class="day-label serif">${lbl}</div>`+list.map((e,i)=>{
-    const t=firstLine(e.title)||firstLine(e.text);
-    return `<div class="entry-row" data-id="${e.id}">
-      <span class="row-title ${t?'':'empty'} serif">${t?esc(t):'(제목 없음)'}</span>
-      <span class="row-meta"><span class="row-kind">${e.kind==='memo'?'메모':'일기'}</span>${timeOnly(e.createdAt)}</span>
-    </div>${i<list.length-1?'<div class="row-sep"></div>':''}`;
-  }).join('');
-  wrap.querySelectorAll('.entry-row').forEach(r=>r.onclick=()=>{state.editingEntry=list.find(e=>e.id===r.dataset.id);state.screen='detail';render();});
+  const card=m=>{
+    const t=firstLine(m.title);
+    const thumb=m.photos&&m.photos.length?`<img class="memo-thumb" src="${m.photos[0]}">`:'';
+    return `<div class="memo-card ${m.pinned?'pinned':''}" data-id="${m.id}">
+      ${m.pinned?'<span class="pin">📌</span>':''}
+      ${thumb}
+      ${t?`<div class="mtitle serif">${esc(t)}</div>`:''}
+      <div class="mtext">${esc(m.text||'')}</div>
+      <div class="mdate">${fmtFull(m.createdAt).split(',')[1]?.trim()||''}</div>
+    </div>`;
+  };
+  let html='<div class="memo-grid">';
+  if(pinned.length){
+    html+=`<div class="memo-section-label">중요 메모</div>`+pinned.map(card).join('');
+    html+=`<div class="memo-section-label">전체</div>`;
+  }
+  html+=rest.map(card).join('')+'</div>';
+  body.innerHTML=html;
+  body.querySelectorAll('.memo-card').forEach(c=>c.onclick=()=>{
+    state.editingEntry=memos.find(m=>m.id===c.dataset.id);state.screen='detail';render();
+  });
 }
 
 function renderListAll(){
   const s=getSession();
-  const entries=loadEntries(s.userId).sort((a,b)=>b.createdAt-a.createdAt);
+  const entries=loadEntries(s.userId).filter(e=>e.kind!=='memo').sort((a,b)=>b.createdAt-a.createdAt);
   const body=document.getElementById('mainBody');
   if(!entries.length){
     body.innerHTML=`<div class="list-head"><div class="greeting serif">오늘도 잘 지냈어요, ${esc(s.userId)}님</div></div>
@@ -328,38 +653,111 @@ function renderListAll(){
       const d=new Date(e.createdAt);
       return `<div class="entry-row" data-id="${e.id}">
         <span class="row-title ${t?'':'empty'} serif">${t?esc(t):'(제목 없음)'}</span>
-        <span class="row-meta">${d.getMonth()+1}/${d.getDate()}</span>
+        <span class="row-meta">${e.photos&&e.photos.length?'📷 ':''}${d.getMonth()+1}/${d.getDate()}</span>
       </div>${i<entries.length-1?'<div class="row-sep"></div>':''}`;
     }).join('');
   body.querySelectorAll('.entry-row').forEach(r=>r.onclick=()=>{state.editingEntry=entries.find(e=>e.id===r.dataset.id);state.screen='detail';render();});
 }
 
+/* =========================================================
+   글쓰기 (일기/메모 공용) — 자동저장 + 사진첨부
+   ========================================================= */
 function renderEditor(){
-  const s=getSession();let kind='diary';let loc=state.pendingLoc;let locStatus=loc?'ok':'idle';
+  const s=getSession();
+  const editing = state.editingEntry;
+  const isMemo = editing ? editing.kind==='memo' : (state._draftKind==='memo');
+  let kind=isMemo?'memo':'diary';
+  let loc=editing ? (editing.loc||null) : state.pendingLoc;
+  let locStatus=loc?'ok':'idle';
+  let photos=editing ? (editing.photos||[]).slice() : (state.draftPhotos||[]);
+  state.pendingLoc=loc; state.draftPhotos=photos;
+
+  // 임시저장 복원 (새 글 작성 중이었고, 수정모드가 아닐 때만)
+  let restoredTitle=editing?(editing.title||''):'';
+  let restoredText=editing?(editing.text||''):'';
+  if(!editing){
+    const draft=loadDraft(s.userId);
+    if(draft&&!draft.editingId&&(draft.title||draft.text)){
+      restoredTitle=draft.title;restoredText=draft.text;
+      kind=draft.kind||kind;loc=draft.loc||loc;photos=draft.photos||photos;
+      state.pendingLoc=loc;state.draftPhotos=photos;
+    }
+  }
+  state._draftKind=kind;
+
   app.innerHTML=`<div class="topbar"><div class="back-row"><button class="icon-btn" id="back">‹</button></div></div>
     <div class="editor-screen">
       <div class="entry-date serif">${fmtFull(Date.now())}</div>
-      <div class="kind-toggle"><button data-k="diary" class="active serif">일기</button><button data-k="memo" class="serif">메모</button></div>
-      <input class="title-input serif" id="titleInput" placeholder="제목">
-      <textarea id="textArea" placeholder="당신의 이야기를 들려주세요..."></textarea>
-      <div class="loc-note" id="locNote">위치 정보를 가져오는 중…</div>
+      <div class="kind-toggle">
+        <button data-k="diary" class="${kind==='diary'?'active':''} serif">일기</button>
+        <button data-k="memo" class="${kind==='memo'?'active':''} serif">메모</button>
+      </div>
+      <input class="title-input serif" id="titleInput" placeholder="제목" value="${esc(restoredTitle)}">
+      <textarea id="textArea" placeholder="당신의 이야기를 들려주세요...">${esc(restoredText)}</textarea>
+      <div class="photo-strip" id="photoStrip"></div>
+      <input type="file" id="photoInput" accept="image/*" multiple style="display:none">
+      <div class="loc-note" id="locNote"></div>
     </div>`;
-  document.getElementById('back').onclick=()=>{state.screen='main';render();};
-  document.querySelectorAll('.kind-toggle button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.kind-toggle button').forEach(x=>x.classList.remove('active'));b.classList.add('active');kind=b.dataset.k;});
+
+  dirtyEditor=false;
+
+  document.getElementById('back').onclick=()=>guardLeave(()=>{
+    dirtyEditor=false;clearDraft(s.userId);state.screen='main';render();
+  });
+
+  document.querySelectorAll('.kind-toggle button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('.kind-toggle button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');kind=b.dataset.k;state._draftKind=kind;
+    locNoteUpdate();
+  });
+
   const note=document.getElementById('locNote');
-  const upd=()=>{
+  function locNoteUpdate(){
+    if(kind==='memo'){note.style.display='none';return;}
+    note.style.display='flex';
     if(locStatus==='ok'&&loc){note.classList.add('active');note.textContent=`◦ 이 위치가 함께 기록됩니다 (${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)})`;}
-    else if(locStatus==='denied'){note.classList.remove('active');note.textContent='◦ 위치 없이 저장됩니다 (https 주소에서 열면 자동 기록됩니다)';}
+    else if(locStatus==='denied'){note.classList.remove('active');note.textContent='◦ 위치 없이 저장됩니다';}
     else{note.classList.remove('active');note.textContent='위치 정보를 가져오는 중…';}
-  };
-  upd();
-  if(!loc){
+  }
+  locNoteUpdate();
+  if(kind==='diary'&&!loc){
     if('geolocation'in navigator&&(location.protocol==='https:'||location.hostname==='localhost')){
       navigator.geolocation.getCurrentPosition(
-        p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};state.pendingLoc=loc;locStatus='ok';upd();},
-        ()=>{locStatus='denied';upd();},{timeout:8000});
-    }else{locStatus='denied';upd();}
+        p=>{loc={lat:p.coords.latitude,lng:p.coords.longitude};state.pendingLoc=loc;locStatus='ok';locNoteUpdate();},
+        ()=>{locStatus='denied';locNoteUpdate();},{timeout:8000});
+    }else{locStatus='denied';locNoteUpdate();}
   }
+
+  function renderPhotoStrip(){
+    const strip=document.getElementById('photoStrip');
+    strip.innerHTML=photos.map((p,i)=>`<div class="photo-thumb"><img src="${p}"><div class="rm" data-i="${i}">✕</div></div>`).join('')
+      +`<button class="photo-add" id="addPhotoBtn">＋</button>`;
+    strip.querySelectorAll('.rm').forEach(r=>r.onclick=()=>{photos.splice(Number(r.dataset.i),1);state.draftPhotos=photos;dirtyEditor=true;renderPhotoStrip();});
+    document.getElementById('addPhotoBtn').onclick=()=>document.getElementById('photoInput').click();
+  }
+  renderPhotoStrip();
+  document.getElementById('photoInput').onchange=async(ev)=>{
+    const files=Array.from(ev.target.files||[]);
+    for(const f of files){
+      if(photos.length>=6){showToast('사진은 최대 6장까지 첨부할 수 있어요');break;}
+      try{
+        const compressed=await compressImage(f);
+        photos.push(compressed);state.draftPhotos=photos;dirtyEditor=true;
+      }catch(e){}
+    }
+    renderPhotoStrip();
+    ev.target.value='';
+  };
+
+  // 입력 시 자동 임시저장(디바운스)
+  let saveTimer=null;
+  ['titleInput','textArea'].forEach(id=>{
+    document.getElementById(id).addEventListener('input',()=>{
+      dirtyEditor=true;
+      clearTimeout(saveTimer);saveTimer=setTimeout(saveDraftNow,500);
+    });
+  });
+
   const bar=document.createElement('button');bar.className='save-bar';bar.textContent='SAVE';
   app.appendChild(bar);
   bar.onclick=()=>{
@@ -367,32 +765,147 @@ function renderEditor(){
     const text=document.getElementById('textArea').value.trim();
     if(!title&&!text){showToast('내용을 입력해 주세요');return;}
     const list=loadEntries(s.userId);
-    const ts=Date.now();
-    list.push({id:'e'+ts+Math.random().toString(36).slice(2,6),kind,title,text,createdAt:ts,loc:loc||null});
+    if(state.editingEntry){
+      const idx=list.findIndex(e=>e.id===state.editingEntry.id);
+      if(idx>-1){
+        list[idx]={...list[idx],kind,title,text,photos:kind==='memo'?photos:[],loc:kind==='diary'?(loc||list[idx].loc||null):null};
+      }
+    } else {
+      const ts=Date.now();
+      list.push({id:'e'+ts+Math.random().toString(36).slice(2,6),kind,title,text,createdAt:ts,
+        loc:kind==='diary'?(loc||null):null, photos:photos.slice(), pinned:false});
+      state.selDayKey=dayKey(ts);
+    }
     saveEntries(s.userId,list);
-    state.selDayKey=dayKey(ts);
+    dirtyEditor=false;clearDraft(s.userId);
+    state.editingEntry=null;state.tab=(kind==='memo')?'memo':state.tab;
     state.screen='main';render();
+    showToast('저장했어요');
   };
 }
 
+/* =========================================================
+   상세보기 (수정 가능)
+   ========================================================= */
 function renderDetail(){
   const s=getSession();const e=state.editingEntry;
+  const isMemo=e.kind==='memo';
   app.innerHTML=`<div class="topbar"><div class="back-row"><button class="icon-btn" id="back">‹</button></div>
-      <button class="icon-btn" id="del" style="margin-left:auto;">⌫</button></div>
+      <div style="margin-left:auto;display:flex;gap:4px;">
+        ${isMemo?`<button class="icon-btn" id="pinBtn">${e.pinned?'📌':'📍'}</button>`:''}
+        <button class="icon-btn" id="editBtn">✎</button>
+        <button class="icon-btn" id="del">⌫</button>
+      </div></div>
     <div class="editor-screen">
       ${firstLine(e.title)?`<h2 class="detail-title serif">${esc(firstLine(e.title))}</h2>`:''}
       <div class="entry-date serif">${fmtFull(e.createdAt)}</div>
       <div class="detail-text serif">${esc(e.text||'')}</div>
+      ${e.photos&&e.photos.length?`<div class="detail-photos">${e.photos.map(p=>`<img src="${p}">`).join('')}</div>`:''}
       ${e.loc?`<div class="map-frame"><iframe loading="lazy" src="https://maps.google.com/maps?q=${e.loc.lat},${e.loc.lng}&z=15&output=embed"></iframe></div>
         <div class="addr-line">◦ 위도 ${e.loc.lat.toFixed(5)}, 경도 ${e.loc.lng.toFixed(5)}</div>`:''}
     </div>`;
   document.getElementById('back').onclick=()=>{state.screen='main';render();};
+  document.getElementById('editBtn').onclick=()=>{
+    // state.editingEntry는 이미 설정되어 있음 (수정 모드로 renderEditor가 인식)
+    state.screen='editor';render();
+  };
+  if(isMemo){
+    document.getElementById('pinBtn').onclick=()=>{
+      const list=loadEntries(s.userId);
+      const idx=list.findIndex(x=>x.id===e.id);
+      if(idx>-1){list[idx].pinned=!list[idx].pinned;saveEntries(s.userId,list);e.pinned=list[idx].pinned;render();}
+    };
+  }
   document.getElementById('del').onclick=()=>{
-    if(confirm('이 글을 삭제할까요? 되돌릴 수 없습니다.')){
-      saveEntries(s.userId,loadEntries(s.userId).filter(x=>x.id!==e.id));state.screen='main';render();}
+    showConfirmModal('삭제할까요?','이 글을 삭제하면 되돌릴 수 없습니다.',()=>{
+      saveEntries(s.userId,loadEntries(s.userId).filter(x=>x.id!==e.id));state.screen='main';render();
+    });
   };
 }
 
+/* =========================================================
+   일정 추가/수정
+   ========================================================= */
+function renderSchedEditor(){
+  const s=getSession();
+  const sc=state.editingSched;
+  const baseDate=sc?new Date(sc.date):new Date(state.selDayKey.split('-').map(Number).reduce((a,v,i)=>i===0?new Date(v,0,1):a,null)||Date.now());
+  const initDateObj = sc? new Date(sc.date) : (()=>{const [y,m,d]=state.selDayKey.split('-').map(Number);return new Date(y,m,d);})();
+  const dateStr = `${initDateObj.getFullYear()}-${String(initDateObj.getMonth()+1).padStart(2,'0')}-${String(initDateObj.getDate()).padStart(2,'0')}`;
+  let repeat = sc? (sc.repeat||'none') : 'none';
+  let allDay = sc? !!sc.allDay : true;
+
+  app.innerHTML=`<div class="topbar"><div class="back-row"><button class="icon-btn" id="back">‹</button></div>
+      <span class="center-title serif">일정</span></div>
+    <div class="editor-screen">
+      <input class="title-input serif" id="sTitle" placeholder="일정 제목" value="${esc(sc?sc.title:'')}">
+      <div class="form-row"><label>날짜</label><input type="date" id="sDate" value="${dateStr}"></div>
+      <div class="form-row"><label>하루 종일 / 시간 지정</label>
+        <div class="chip-row"><span class="chip ${allDay?'active':''}" data-v="1" id="chipAllday">하루 종일</span><span class="chip ${!allDay?'active':''}" data-v="0" id="chipTime">시간 지정</span></div>
+      </div>
+      <div class="form-row" id="timeRow" style="display:${allDay?'none':'block'}"><label>시간</label>
+        <input type="time" id="sTime" value="${sc?String(sc.hour||9).padStart(2,'0')+':'+String(sc.minute||0).padStart(2,'0'):'09:00'}"></div>
+      <div class="form-row"><label>반복</label>
+        <div class="chip-row">
+          <span class="chip rchip ${repeat==='none'?'active':''}" data-v="none">반복 안함</span>
+          <span class="chip rchip ${repeat==='weekly'?'active':''}" data-v="weekly">매주</span>
+          <span class="chip rchip ${repeat==='monthly'?'active':''}" data-v="monthly">매월</span>
+          <span class="chip rchip ${repeat==='yearly'?'active':''}" data-v="yearly">매년</span>
+        </div>
+      </div>
+      <div class="form-row"><label>음력 보기</label>
+        <div id="lunarPreview" class="addr-line">◦ ${lunarLabel(initDateObj)}</div>
+      </div>
+    </div>`;
+  document.getElementById('back').onclick=()=>{state.screen='main';render();};
+  document.getElementById('chipAllday').onclick=()=>{allDay=true;document.getElementById('chipAllday').classList.add('active');document.getElementById('chipTime').classList.remove('active');document.getElementById('timeRow').style.display='none';};
+  document.getElementById('chipTime').onclick=()=>{allDay=false;document.getElementById('chipTime').classList.add('active');document.getElementById('chipAllday').classList.remove('active');document.getElementById('timeRow').style.display='block';};
+  document.querySelectorAll('.rchip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.rchip').forEach(x=>x.classList.remove('active'));c.classList.add('active');repeat=c.dataset.v;});
+  document.getElementById('sDate').onchange=(e)=>{
+    const [y,m,d]=e.target.value.split('-').map(Number);
+    document.getElementById('lunarPreview').textContent='◦ '+lunarLabel(new Date(y,m-1,d));
+  };
+
+  const bar=document.createElement('button');bar.className='save-bar';bar.textContent=sc?'수정 완료':'일정 저장';
+  app.appendChild(bar);
+  bar.onclick=()=>{
+    const title=document.getElementById('sTitle').value.trim();
+    if(!title){showToast('일정 제목을 입력해 주세요');return;}
+    const dv=document.getElementById('sDate').value;
+    const [y,m,d]=dv.split('-').map(Number);
+    let hour=9,minute=0;
+    if(!allDay){const tv=document.getElementById('sTime').value||'09:00';[hour,minute]=tv.split(':').map(Number);}
+    const dateTs=new Date(y,m-1,d).getTime();
+    const list=loadSched(s.userId);
+    if(sc){
+      const idx=list.findIndex(x=>x.id===sc.id);
+      if(idx>-1)list[idx]={...list[idx],title,date:dateTs,allDay,hour,minute,repeat};
+    } else {
+      list.push({id:'s'+Date.now()+Math.random().toString(36).slice(2,6),title,date:dateTs,allDay,hour,minute,repeat,createdAt:Date.now()});
+    }
+    saveSched(s.userId,list);
+    state.selDayKey=dayKeyYMD(y,m-1,d);
+    state.editingSched=null;state.screen='main';render();
+    showToast('일정을 저장했어요');
+  };
+
+  if(sc){
+    const delBtn=document.createElement('button');
+    delBtn.textContent='일정 삭제';
+    delBtn.style="position:fixed;bottom:88px;left:50%;transform:translateX(-50%);width:calc(100% - 52px);max-width:408px;background:none;border:1px solid #c0392b;color:#c0392b;padding:12px;font-size:13px;cursor:pointer;z-index:30;font-family:inherit;";
+    app.appendChild(delBtn);
+    delBtn.onclick=()=>{
+      showConfirmModal('일정을 삭제할까요?','삭제하면 되돌릴 수 없습니다.',()=>{
+        saveSched(s.userId,loadSched(s.userId).filter(x=>x.id!==sc.id));
+        state.editingSched=null;state.screen='main';render();
+      });
+    };
+  }
+}
+
+/* =========================================================
+   설정
+   ========================================================= */
 function renderSettings(){
   const s=getSession();
   const savedEmail=(()=>{try{return JSON.parse(localStorage.getItem('somEmail_'+s.userId))||'';}catch(e){return'';}})();
@@ -402,17 +915,22 @@ function renderSettings(){
       <div class="set-group"><h3>ACCOUNT</h3>
         <div class="set-item"><div class="lbl serif">${esc(s.userId)}님으로 사용 중</div>
           <div class="dsc">이 폰 안에서만 저장되며, 다른 사람의 글은 보이지 않습니다.</div>
-          <button class="act" id="logout">로그아웃</button></div></div>
+          <button class="act" id="logout" style="margin-top:14px;">로그아웃</button></div>
+        <div class="set-item"><div class="toggle-row"><div>
+            <div class="lbl serif">로그인 유지</div>
+            <div class="dsc">켜두면 앱을 다시 열 때 비번 없이 바로 들어가요. 끄면 매번 비밀번호를 입력합니다 (아이디는 항상 기억돼요).</div>
+          </div><label class="toggle"><input type="checkbox" id="autoLoginToggle" ${getAutoLogin()?'checked':''}><span class="slider"></span></label></div></div>
+      </div>
       <div class="set-group"><h3>백업 · 폰 옮기기</h3>
         <div class="set-item"><div class="lbl serif">① 백업 파일 저장 (복원용)</div>
-          <div class="dsc">모든 글·위치를 하나의 백업 파일로 내려받습니다. 폰을 바꾸거나 데이터가 사라져도 이 파일로 그대로 되살릴 수 있어요. 메일로 보내두면 안전합니다.</div>
+          <div class="dsc">모든 일기·메모·일정·사진을 하나의 백업 파일로 내려받습니다. 폰을 바꾸거나 데이터가 사라져도 이 파일로 그대로 되살릴 수 있어요.</div>
           <button class="act solid" id="exportJson">백업 파일 저장하기</button></div>
         <div class="set-item"><div class="lbl serif">② 백업 파일 불러오기 (복원)</div>
-          <div class="dsc">①에서 저장한 백업 파일을 선택하면, 그 안의 글이 지금 계정으로 모두 복원됩니다. 새 폰에서 이어서 쓸 때 사용하세요. (이미 있는 글과 합쳐지며, 같은 글은 중복되지 않아요)</div>
+          <div class="dsc">①에서 저장한 백업 파일을 선택하면 지금 계정으로 모두 복원됩니다. (중복되지 않게 합쳐져요)</div>
           <input type="file" id="importFile" accept=".json,application/json" style="display:none">
           <button class="act" id="importBtn">백업 파일 불러오기</button></div>
         <div class="set-item"><div class="lbl serif">메일로 백업 보내기</div>
-          <div class="dsc">받을 이메일을 적어두면, 아래 버튼이 메일 앱을 엽니다. 위 ①에서 저장한 백업 파일을 첨부해 보내두면 가장 안전해요.</div>
+          <div class="dsc">받을 이메일을 적어두면 버튼이 메일 앱을 엽니다. ①에서 저장한 파일을 첨부해 보내두면 가장 안전해요.</div>
           <input id="bmail" type="email" placeholder="example@email.com" value="${esc(savedEmail)}">
           <button class="act" id="backup" style="margin-top:10px;">메일 앱 열기 (읽기용 사본 첨부)</button></div></div>
       <div class="set-group"><h3>SHARE</h3>
@@ -421,14 +939,29 @@ function renderSettings(){
           <button class="act" id="share">공유하기</button></div></div>
     </div>`;
   document.getElementById('back').onclick=()=>{state.screen='main';render();};
-  document.getElementById('logout').onclick=()=>{clearSession();state.screen='lock';render();};
+  document.getElementById('logout').onclick=()=>{
+    clearSession();setAutoLogin(false);
+    localStorage.removeItem('somPersistSession');
+    state.screen='lock';render();
+  };
+  document.getElementById('autoLoginToggle').onchange=(e)=>{
+    setAutoLogin(e.target.checked);
+    if(e.target.checked){
+      localStorage.setItem(PERSIST_SESSION,JSON.stringify({userId:s.userId}));
+    } else {
+      localStorage.removeItem(PERSIST_SESSION);
+    }
+    showToast(e.target.checked?'로그인 유지를 켰어요':'로그인 유지를 껐어요');
+  };
+
   const bm=document.getElementById('bmail');
   bm.onchange=()=>{localStorage.setItem('somEmail_'+s.userId,JSON.stringify(bm.value.trim()));showToast('이메일이 저장되었습니다');};
-  // ① 복원용 백업 파일 저장 (JSON)
+
   document.getElementById('exportJson').onclick=()=>{
-    const list=loadEntries(s.userId);
-    if(!list.length){showToast('백업할 글이 없습니다');return;}
-    const pack={app:'SOMSOM',version:1,userId:s.userId,exportedAt:Date.now(),entries:list};
+    const entries=loadEntries(s.userId);
+    const scheds=loadSched(s.userId);
+    if(!entries.length&&!scheds.length){showToast('백업할 내용이 없습니다');return;}
+    const pack={app:'SOMSOM',version:2,userId:s.userId,exportedAt:Date.now(),entries,scheds};
     const blob=new Blob([JSON.stringify(pack)],{type:'application/json'});
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');a.href=url;
@@ -437,7 +970,6 @@ function renderSettings(){
     URL.revokeObjectURL(url);
     showToast('백업 파일을 저장했어요. 메일로도 보내두면 안전해요');
   };
-  // ② 복원 (가져오기)
   document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
   document.getElementById('importFile').onchange=(ev)=>{
     const file=ev.target.files[0];if(!file)return;
@@ -445,17 +977,25 @@ function renderSettings(){
     reader.onload=()=>{
       try{
         const pack=JSON.parse(reader.result);
-        const incoming=Array.isArray(pack)?pack:(pack.entries||[]);
-        if(!incoming.length){showToast('백업 파일에 글이 없습니다');return;}
-        const cur=loadEntries(s.userId);
-        const seen=new Set(cur.map(e=>e.id));
-        let added=0;
-        incoming.forEach(e=>{
-          if(e&&e.id&&!seen.has(e.id)){cur.push(e);seen.add(e.id);added++;}
-          else if(e&&!e.id){e.id='e'+Date.now()+Math.random().toString(36).slice(2,6);cur.push(e);added++;}
+        const incomingE=Array.isArray(pack)?pack:(pack.entries||[]);
+        const incomingS=pack.scheds||[];
+        const curE=loadEntries(s.userId);
+        const seenE=new Set(curE.map(e=>e.id));
+        let addedE=0;
+        incomingE.forEach(e=>{
+          if(e&&e.id&&!seenE.has(e.id)){curE.push(e);seenE.add(e.id);addedE++;}
+          else if(e&&!e.id){e.id='e'+Date.now()+Math.random().toString(36).slice(2,6);curE.push(e);addedE++;}
         });
-        saveEntries(s.userId,cur);
-        showToast(`복원 완료! ${added}개의 글을 가져왔어요`);
+        saveEntries(s.userId,curE);
+        const curS=loadSched(s.userId);
+        const seenS=new Set(curS.map(x=>x.id));
+        let addedS=0;
+        incomingS.forEach(x=>{
+          if(x&&x.id&&!seenS.has(x.id)){curS.push(x);seenS.add(x.id);addedS++;}
+          else if(x&&!x.id){x.id='s'+Date.now()+Math.random().toString(36).slice(2,6);curS.push(x);addedS++;}
+        });
+        saveSched(s.userId,curS);
+        showToast(`복원 완료! 글 ${addedE}개, 일정 ${addedS}개를 가져왔어요`);
       }catch(err){
         showToast('이 파일은 SOMSOM 백업 파일이 아니에요 (.json)');
       }
@@ -484,13 +1024,53 @@ function renderSettings(){
   };
 }
 
+/* =========================================================
+   시작
+   ========================================================= */
 clearSession();
 if(navigator.storage&&navigator.storage.persist){navigator.storage.persist().catch(()=>{});}
+
+// 자동로그인 옵션이 켜져 있으면, 마지막 아이디로 자동 입장 (단, 비번은 저장 안 하므로
+// "마지막 로그인 사용자"를 그대로 유지하는 방식 — 별도 세션 토큰 사용)
+const PERSIST_SESSION='somPersistSession';
+function checkAutoLogin(){
+  if(getAutoLogin()){
+    try{
+      const saved=JSON.parse(localStorage.getItem(PERSIST_SESSION));
+      if(saved&&saved.userId){
+        setSession(saved.userId);
+        state.screen='main';
+        return;
+      }
+    }catch(e){}
+  }
+  state.screen='lock';
+}
+checkAutoLogin();
+
+// 로그인 성공 시 자동로그인이 켜져있으면 영구세션 저장
+const _origSetSession=setSession;
+window.__afterLoginHook=()=>{
+  if(getAutoLogin()){
+    const s=getSession();
+    if(s)localStorage.setItem(PERSIST_SESSION,JSON.stringify({userId:s.userId}));
+  }
+};
+
 render();
 if('serviceWorker'in navigator){
-  const sw=`self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>self.clients.claim());self.addEventListener('fetch',e=>{});`;
+  const sw=`
+    const CACHE='somsom-v'+(self.registration?self.registration.scope:'1');
+    self.addEventListener('install',e=>self.skipWaiting());
+    self.addEventListener('activate',e=>self.clients.claim());
+    self.addEventListener('fetch',e=>{});
+    self.addEventListener('message',e=>{ if(e.data==='check-update') self.registration.update(); });
+  `;
   const u=URL.createObjectURL(new Blob([sw],{type:'application/javascript'}));
-  navigator.serviceWorker.register(u).catch(()=>{});
+  navigator.serviceWorker.register(u).then(reg=>{
+    reg.update();
+    setInterval(()=>reg.update(),60000);
+  }).catch(()=>{});
 }
 </script>
 </body>
